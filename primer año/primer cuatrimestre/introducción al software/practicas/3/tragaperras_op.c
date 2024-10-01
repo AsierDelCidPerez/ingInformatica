@@ -1,7 +1,7 @@
 /**
  * @file tragaperras.c
  *
- * @brief programa de simulación de una máquina tragaperras.
+ * @brief programa de simulación de una máquina tragaperras con un modelado de distribución normal al conseguir 3 sietes.
  *
  * @author  ASIER <Introducción al Software>
  * @version 2024-10-01
