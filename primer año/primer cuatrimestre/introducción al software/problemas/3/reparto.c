@@ -69,7 +69,7 @@ int main (void) {
     return 0;
 }
 
-int obten_num_aleatorio(int a, int b) {
+int obten_num_aleatorio (int a, int b) {
     return rand() % (b - a + 1) + a;
 }
 
