@@ -16,31 +16,21 @@
 
 #define MAX_AMMOUNT   15
 #define LENGTH_OF_REF 3
-/* Número de mayúsculas antes de los números:
- * - Hay N_LETRAS_OF_REF de letras
- * - Hay LENGTH_OF_REF - N_LETRAS_OF_REF números
- * El formato en todo caso ha de ser AAA...A11...1
- */ 
-#define N_LETRAS_OF_REF 2
-#define A_MAYUSCULA     'A'
-#define Z_MAYUSCULA     'Z'
-#define CERO            '0'
-#define NUEVE           '9'
 // Mensajes para decir si hay stock o no
 #define HAY_STOCK    "==> Existe stock suficiente para servir el pedido de forma inmediata"
 #define NO_HAY_STOCK "==> Ahora mismo no se dispone de stock suficiente."
 
 /**
  * @brief Mira el stock en todos los almacenes de un producto
- * @param ref referencia del producto a mirar stock
+ * @param ref Referencia del producto a mirar stock
  * @returns int que alude al stock total de un producto
  */
 int total_unidades_en_stock (string ref);
 
 /**
  * @brief Revisa el formato de la referencia del producto
- * @param ref referencia del artículo
- * @returns devuelve true si el formato es correcto, si no false.
+ * @param ref Referencia del artículo
+ * @returns Devuelve true si el formato es correcto, si no false.
  */
 bool check_format_of_ref (string ref);
 
@@ -48,7 +38,7 @@ bool check_format_of_ref (string ref);
  * @brief Revisa el formato del input del usuario
  * @param ammount entero positivo (1-MAX_AMMOUNT) que desea el usuario 
  *        de un producto
- * @param ref referencia de un producto a modo de id.
+ * @param ref Referencia de un producto a modo de id.
  * @returns true si el input se ajusta al formato.
  */
 bool gestion_errores (int ammount, string ref);
@@ -85,19 +75,9 @@ int total_unidades_en_stock (string ref) {
 }
 
 bool check_format_of_ref (string ref) {
-    int i = 0;
-    if (!(strlen (ref) == LENGTH_OF_REF)) {
+    if (!(strlen (ref) == LENGTH_OF_REF)) 
         return false;
-    }
-    // Se miran si los caracteres hasta N_LETRAS_OF_REF son letras mayúsculas.
-    for (; i < N_LETRAS_OF_REF; ++i) 
-        if (ref[i] < A_MAYUSCULA || ref[i] > Z_MAYUSCULA) 
-            return false;
-    // Se miran si los caracteres hasta LENGTH_OF_REF (desde N_LETRAS_OF_REF) son números.
-    for (; i < LENGTH_OF_REF; ++i) 
-        if (ref[i] < CERO || ref[i] > NUEVE)
-            return false;
-    // En este punto i == LENGTH_OF_REF es true
+    
     return true;
 }
 
