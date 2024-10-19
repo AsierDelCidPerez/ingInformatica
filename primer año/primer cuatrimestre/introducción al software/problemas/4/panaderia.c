@@ -22,31 +22,31 @@
 
 /**
  * @brief Asegura que el formato del tipo de pan es correcto.
- * @param tipo El tipo de pan que solicita el usuario.
+ * @param tipo (entero) tipo de pan que solicita el usuario.
+ * @param cantidad (entero) cantidad de pan encargado
  * @return true si es válido y false si no lo es.
  */
-bool is_tipo_pan_valido (int tipo);
+bool is_datos_correctos (int tipo, int cantidad);
 
 /**
  * @brief Obtiene l precio de un pedido (sin rebaja si la hubiera).
- * @param tipo El tipo de pan que solicita el usuario.
- * @param cantidad Cantidad de panes de ese tipo para el encargo.
+ * @param tipo (entero) El tipo de pan que solicita el usuario.
+ * @param cantidad (entero) Cantidad de panes de ese tipo para el encargo.
  * @return un real que representa el precio no rebajado del pedido.
  */
 float get_precio_sin_rebajar (int tipo, int cantidad);
 
 /**
  * @brief Obtiene el precio de un pedido rebajado (si lo hubiera)
- * @param tipo El tipo de pan que solicita el usuario.
- * @param cantidad Cantidad de panes de ese tipo para el encargo.
+ * @param tipo (entero) El tipo de pan que solicita el usuario.
+ * @param cantidad (entero) Cantidad de panes de ese tipo para el encargo.
  * @return un real que representa el precio rebajado (si aplica) del pedido.
  */
 float get_precio_pedido (int tipo, int cantidad);
 
 /**
  * @brief Obtiene las unidades vendidas del pan solicitado en el día indicado
- * @param dia el número de día del mes. Valores posibles: 1 a 30
- * @param tipo_pan el tipo de pan solicitado (PAN_NORMAL, PAN_ESPECIAL o PAN_MOLDE)
+ * @param tipo_pan (entero) el tipo de pan solicitado (PAN_NORMAL, PAN_ESPECIAL o PAN_MOLDE)
  * @returns el número de unidades vendidas del tipo solicitado en el día indicado
  */
 int unidades_vendidas_ultimo_mes (int tipo);
@@ -62,7 +62,7 @@ int main (void) {
     cantidad = get_user_int();
     
     // Gestión de errores del input
-    if (!is_tipo_pan_valido (tipo)) {
+    if (!is_datos_correctos (tipo, cantidad)) {
         return 1;
     }
     
@@ -75,11 +75,15 @@ int main (void) {
             unidades_vendidas_ultimo_mes (tipo));
 }
 
-bool is_tipo_pan_valido (int tipo) {
+bool is_datos_correctos (int tipo, int cantidad) {
     // Nos aseguramos de que todos los tipos de pan están entre el tipo
     // de pan normal ... pan de molde.
     if (tipo < PAN_NORMAL || tipo > PAN_MOLDE) {
-        printf ("[-] Error por tipo de pan incorrecto.\n");
+        printf ("Error por tipo de pan incorrecto.\n");
+        return false;
+    }
+    if (cantidad < 0) {
+        printf ("Error por cantidad negativa.\n");
         return false;
     }
     return true;
