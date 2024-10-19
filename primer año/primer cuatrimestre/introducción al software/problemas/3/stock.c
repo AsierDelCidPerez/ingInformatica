@@ -59,9 +59,9 @@ int main (void) {
     printf ("Nº de unidades en stock: %d\n", stock);
     
     if (stock >= ammount) 
-        printf (HAY_STOCK);
+        printf ("==> Existe stock suficiente para servir el pedido de forma inmediata");
     else
-        printf (NO_HAY_STOCK);
+        printf ("==> Ahora mismo no se dispone de stock suficiente.");
     
     return 0;
 }
