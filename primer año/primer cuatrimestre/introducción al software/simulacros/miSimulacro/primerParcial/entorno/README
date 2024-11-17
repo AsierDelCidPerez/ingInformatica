@@ -1,0 +1,17 @@
+EL EXAMEN.
+La asociación de fútbol está cansada de hacer tanto dinero y quiere hacer más dinero aun (pero trabajando menos). Por eso estás tu aquí.
+Tu trabajo es automatizar los repetitivos trabajos que tienen que hacer. Afortunadamente el trabajo arduo ya lo ha hecho otro programador que te da una librería en la que hay una función get_score_tournament (mira la documentación).
+
+El examen consta de 5 flags (mire la documentación de la librería):
+
+Primera tarea.- crear una función total_puntos_jugador que devuelve la cantidad de puntos anotados por un jugador de un equipo a lo largo de todos los torneos celebrados.
+
+Segunda tarea.- crear una función que devuelva la máxima cantidad de puntos anotados por el jugador de un equipo a lo largo de todos los torneos.
+
+Tercera tarea.- crear una función que permita saber la cantidad de puntos totales obtenidos por un equipo a lo largo de todos los torneos.
+
+Cuarta tarea.- Obtener la media de las puntuaciones de todos los jugadores a lo largo de todos los torneos. Crea una función para ello.
+
+Quinta tarea.- Obtén la mejor puntuación obtenida en un torneo por un jugador.
+
+Para ayudarte a saber si tus funciones son correctas en la documentación se especifican unas función de checking para que puedas comprobarlas.
