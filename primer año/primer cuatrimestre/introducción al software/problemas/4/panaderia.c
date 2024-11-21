@@ -45,11 +45,10 @@ float get_precio_sin_rebajar (int tipo, int cantidad);
 float get_precio_pedido (int tipo, int cantidad);
 
 /**
- * @brief Obtiene las unidades vendidas del pan solicitado en el día indicado
- * @param tipo_pan (entero) el tipo de pan solicitado (PAN_NORMAL, PAN_ESPECIAL o PAN_MOLDE)
- * @returns el número de unidades vendidas del tipo solicitado en el día indicado
+ * @brief Obtiene las unidades vendidas de pan en el último mes
+ * @returns el número de unidades vendidas en último mes
  */
-int unidades_vendidas_ultimo_mes (int tipo);
+int unidades_vendidas_ultimo_mes();
 
 int main (void) {
     // Declaración de variables.
@@ -71,8 +70,8 @@ int main (void) {
     // Output del programa
     printf ("El precio final de tu pedido es: %.2f €.\n", precio_pedido);
     
-    printf ("Este mes se han vendido un total de %d unidades de ese tipo de pan.\n",
-            unidades_vendidas_ultimo_mes (tipo));
+    printf ("Este mes se han vendido un total de %d unidades.\n",
+            unidades_vendidas_ultimo_mes());
 }
 
 bool is_datos_correctos (int tipo, int cantidad) {
@@ -117,11 +116,12 @@ float get_precio_pedido (int tipo, int cantidad) {
     return precio_compra;
 }
 
-int unidades_vendidas_ultimo_mes (int tipo) {
+int unidades_vendidas_ultimo_mes() {
     int unidades_vendidas = 0;
     // Recogemos las unidades vendidas de cada día del mes.
-    for (int dia = 1; dia <= DIAS_DE_UN_MES; ++dia) {
-        unidades_vendidas += obten_unidades_vendidas (dia, tipo);
-    }
+    for (int tipo = PAN_NORMAL; tipo <= PAN_MOLDE; ++tipo)
+        for (int dia = 1; dia <= DIAS_DE_UN_MES; ++dia) {
+            unidades_vendidas += obten_unidades_vendidas (dia, tipo);
+        }
     return unidades_vendidas;
 } 
