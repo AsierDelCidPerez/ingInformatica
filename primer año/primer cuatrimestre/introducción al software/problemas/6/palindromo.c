@@ -38,34 +38,48 @@ void quita_espacios (char texto[]);
 
 bool es_palindromo (char texto[]);
 
-int main(void)
-{
-	char texto[MAX_TEXTO+1] = "dabale arroz a la zorra el abad";
+int main (void) {
+    // Input
+    char texto[MAX_TEXTO + 1] = "dabale arroz a la zorra el abad";
+    // Algoritmo
     quita_espacios (texto);
-    if (es_palindromo(texto)) {
-        printf("Es palíndromo\n");
-    }else{
-        printf("No es palíndromo\n");
+    if (es_palindromo (texto)) {
+        printf ("Es palíndromo\n");
     }
-	return 0;
+    else {
+        printf ("No es palíndromo\n");
+    }
+    return 0;
 }
 
-void quita_espacios (char texto[]){
+void quita_espacios (char texto[]) {
     int contador = 0;
-    for (int i=0; i < strlen(texto); i++) {
+    /*
+     * mediante una búsqueda lineal si el carácter actual es un espacio
+     * entonces lo reemplaza con el próximo carácter no espacio.
+     */
+    for (int i = 0; i < strlen (texto); i++) {
         if (texto[i] != ' ') {
             texto[contador] = texto[i];
             contador++;
         }
     }
     texto[contador] = '\0';
+    // Hasta \0 la transformación solicitada es correcta (puede haber ruido).
 }
 
 bool es_palindromo (char texto[]) {
-    int mitad_texto = strlen(texto) / 2 + 1;
+    int mitad_texto = strlen (texto) / 2 + 1;
+    
+    /*
+     * Se usa el algoritmo de two-pointers para la solución de este problema:
+     * mediante una búsqueda lineal hasta la mitad del texto se itera (con it)
+     * y se compara que texto[it] sea igual a texto[it_dual] donde it_dual es el
+     * iterador simétrico respecto a la cadena.
+     */
     
     for (int it = 0; it < mitad_texto; it++) {
-        int it_dual = strlen(texto) - it - 1;
+        int it_dual = strlen (texto) - it - 1;
         if (texto[it] != texto[it_dual]) {
             return false;
         }
