@@ -1,7 +1,7 @@
 
 primera_solucion = 1;
 paso = 0.1;
-T = 100
+T = 1000;
 
 function [resultado] = funcion_diferencial(t, y)
     resultado =  y^2;
@@ -40,7 +40,7 @@ v = zeros(T/paso);
 y(1) = 1;
 v(1) = 0;
 
-# Euler vectores
+% Euler vectores
 for i = 1:T/paso -1
   y(i+1) = y(i)  + paso * v(i);
   v(i+1) = v(i) + paso*(-1*y(i));
@@ -51,14 +51,16 @@ y = zeros(T/paso-1);
 y(1) = 1;
 v(1) = 0;
 
-# Euler modificado
+% Euler modificado
 for t=1:T/paso-1
   aux1 = y(t) + (paso/2) * v(t);
-  aux2 = v(t) + (paso/2) * (-y(t));
+  aux2 = v(t) + (paso/2) * (-y(t)); % Funcion
 
- y(t+1) = y(t)  + (paso)* aux2; # Euler mod para el primero
+  y(t+1) = y(t)  + (paso)* aux2; % Euler mod para el primero
   v(t+1) = v(t) + paso*(-aux1);
 end
+
+
 
 plot(y);
 
