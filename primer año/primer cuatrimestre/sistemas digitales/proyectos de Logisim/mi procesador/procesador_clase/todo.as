@@ -1,0 +1,2 @@
+MOVI R1 0x12
+OUT R1 0x00
